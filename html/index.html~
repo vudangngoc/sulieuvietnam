@@ -1,0 +1,73 @@
+<html>
+<head>
+<script type="text/javascript">
+display=function(text){
+alert(text)
+}
+get=function(url,callback){
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		if(callback != null)
+			callback(xmlhttp.responseText)
+	    }
+	  }
+	xmlhttp.open("GET",url);
+	xmlhttp.send();
+}
+post=function(url,callback){
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		if(callback != null)
+			callback(xmlhttp.responseText)
+	    }
+	  }
+	xmlhttp.open("POST",url);
+	xmlhttp.send();
+}
+load=function(url){
+	get(url, function(s){
+		var el=document.getElementById("content")
+		el.innerHTML = s
+	})
+}
+</script>
+</head>
+<body>
+<div id="menu" style="height:auto;width:100%;">
+<div style="width:10%;float:left;display: inline;"> <a href="index.html"><h4 style="margin-top:0;">Trang chủ</h4></a></div>
+<div style="width:12%;float:left;display: inline;"> <a onclick='load("author.html")'><h4 style="margin-top:0;">Author</h4></a></div>
+<div style="width:12%;float:left;display: inline;"> <a onclick='load("book.html")'><h4 style="margin-top:0;">Book</h4></a></div>
+<div style="width:15%;float:left;display: inline;"> <a onclick='load("item.html")'><h4 style="margin-top:0;">Item</h4></a></div>
+</div>
+</br>
+<div id="content" style="height:auto;width:100%;">
+</div>
+
+</br>
+</br>
+</br>
+<button type="button" onclick='get("/author/?action=getAuthor&authorId=6a713f44697649aba3ef975e79c23d13a243f3e505df40b2bccde2575cd8c30b",display)'>Click Me!</button>
+</body>
+</html>
