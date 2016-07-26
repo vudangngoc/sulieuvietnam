@@ -71,8 +71,15 @@ public class StatisticFileHandle  extends AbstractHandler {
       response.setEntity(new NStringEntity("FORBIDDEN"));
     } else {
       response.setStatusCode(HttpStatus.SC_OK);
-      NFileEntity body = new NFileEntity(file,
-              ContentType.create("text/html", Consts.UTF_8));
+      String fileName = file.getName();
+      NFileEntity body = null;
+	if(fileName.endsWith("html"))
+		body = new NFileEntity(file,ContentType.create("text/html", Consts.UTF_8));
+	else if (fileName.endsWith("js"))
+		body = new NFileEntity(file,ContentType.create("text/js", Consts.UTF_8));
+	else
+		body = new NFileEntity(file,ContentType.create("text/css", Consts.UTF_8));
+      
       response.setEntity(body);
     }
     httpexchange.submitResponse(new BasicAsyncResponseProducer(response));

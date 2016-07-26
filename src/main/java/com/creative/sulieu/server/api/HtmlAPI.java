@@ -8,6 +8,6 @@ public class HtmlAPI extends StatisticFileHandle {
   final static Logger logger = Logger.getLogger(HtmlAPI.class);
   @Override
   protected String getRootFolder() {
-    return "/usr/share/nginx/html";
+    return "/home/guttso/html";
   }
 }
