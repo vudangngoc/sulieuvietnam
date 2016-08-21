@@ -33,16 +33,24 @@ public class Author extends Object {
   public String getComment() {
     return getData().getString(COMMENT);
   }
-  public void setComment(String comment) {
+  public void setDescription(String comment) {
     getData().put(COMMENT, comment);
   }
   
   public String getId() {
-    return getData().getString(ID);
+    String result = "";
+    result = getData().getString(ID);
+    if(!"".equals(result))
+      return getData().getString(ID);
+    else
+      return this.id;
 
   }
   
-  public void setId(String id) {getData().put(ID, id);}
+  public void setId(String id) {
+    getData().put(ID, id);
+    this.id = id;
+  }
   @Override
   public boolean valid(JSONObject object) {
     // TODO Auto-generated method stub

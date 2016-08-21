@@ -65,6 +65,7 @@ public class AuthorBackend  extends AbstractHandler {
         if(!"".equals(payload)) {
           Author a = new Author();
           a.setData(new JSONObject(payload));
+          a.setId(a.getId());
           dao.save(a.getId(), a);
           result = "{\"OK\"}";
         }

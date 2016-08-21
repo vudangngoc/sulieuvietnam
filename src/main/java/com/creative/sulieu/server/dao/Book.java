@@ -8,6 +8,11 @@ public class Book extends Object {
   private static String authorId = "authorId";
   private static String bookName = "bookName";
   private static String releaseYear = "releaseYear";
+  @Override
+  public void setId(String id){
+    getData().put(ID, id);
+    this.id = id;
+  }
   public String getAuthorId() {
     return getData().getString(id);
   }

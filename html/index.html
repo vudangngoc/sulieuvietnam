@@ -1,74 +1,124 @@
-<html>
-<head>
-<script type="text/javascript">
-display=function(text){
-alert(text)
-}
-get=function(url,callback){
-	var xmlhttp;
-	if (window.XMLHttpRequest)
-	  {// code for IE7+, Firefox, Chrome, Opera, Safari
-	  xmlhttp=new XMLHttpRequest();
-	  }
-	else
-	  {// code for IE6, IE5
-	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-	xmlhttp.onreadystatechange=function()
-	  {
-	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-	    {
-		if(callback != null)
-			callback(xmlhttp.responseText)
-	    }
-	  }
-	xmlhttp.open("GET",url);
-	xmlhttp.send();
-}
-post=function(url,s,callback){
-	var xmlhttp;
-	if (window.XMLHttpRequest)
-	  {// code for IE7+, Firefox, Chrome, Opera, Safari
-	  xmlhttp=new XMLHttpRequest();
-	  }
-	else
-	  {// code for IE6, IE5
-	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-	xmlhttp.onreadystatechange=function()
-	  {
-	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-	    {
-		if(callback != null)
-			callback(xmlhttp.responseText)
-	    }
-	  }
-	xmlhttp.open("POST",url);
-	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	xmlhttp.send(s);
-}
-load=function(url){
-	get(url, function(s){
-		var el=document.getElementById("content")
-		el.innerHTML = s
-	})
-}
-</script>
-</head>
-<body>
-<div id="menu" style="height:auto;width:100%;">
-<div style="width:10%;float:left;display: inline;"> <a href="index.html"><h4 style="margin-top:0;">Trang chủ</h4></a></div>
-<div style="width:12%;float:left;display: inline;"> <a onclick='load("author.html")'><h4 style="margin-top:0;">Author</h4></a></div>
-<div style="width:12%;float:left;display: inline;"> <a onclick='load("book.html")'><h4 style="margin-top:0;">Book</h4></a></div>
-<div style="width:15%;float:left;display: inline;"> <a onclick='load("item.html")'><h4 style="margin-top:0;">Item</h4></a></div>
-</div>
-</br>
-<div id="content" style="height:auto;width:100%;">
-</div>
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://admin.sulieuvietnam.info:2368/welcome-to-ghost/ -->
+<html><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-</br>
-</br>
-</br>
-<button type="button" onclick='get("/author/?action=getAuthor&authorId=6a713f44697649aba3ef975e79c23d13a243f3e505df40b2bccde2575cd8c30b",display)'>Click Me!</button>
-</body>
-</html>
+    <title>Chào mừng tới Sử liệu Việt Nam</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" type="text/css" href="./screen.css">
+    <link rel="stylesheet" type="text/css" href="./css">
+
+    <link rel="canonical" href="http://admin.sulieuvietnam.info:2368/welcome-to-ghost/">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="Sử liệu Việt Nam">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Chào mừng tới Sử liệu Việt Nam">
+    <meta property="og:description" content="Nhằm mục đích hỗ trợ những người muốn tìm hiểu lịch sử có thể tiếp cận các dữ liệu lịch sử nguyên gốc (raw data) chưa bị bình phẩm, thêm thắt hay làm sai lệch một cách vô tình hay hữu ý, chúng tôi cung cấp một công cụ tra">
+    <meta property="og:url" content="http://sulieuvietnam.info/">
+    <meta property="article:published_time" content="2016-03-23T14:40:54.236Z">
+    <meta property="article:modified_time" content="2016-03-23T17:27:10.595Z">
+    <meta property="article:tag" content="Getting Started">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Chào mừng tới Sử liệu Việt Nam">
+    <meta name="twitter:description" content="Nhằm mục đích hỗ trợ những người muốn tìm hiểu lịch sử có thể tiếp cận các dữ liệu lịch sử nguyên gốc (raw data) chưa bị bình phẩm, thêm thắt hay làm sai lệch một cách vô tình hay hữu ý, chúng tôi cung cấp một công cụ tra">
+    <meta name="twitter:url" content="http://sulieuvietnam.info/index.html/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Dang Ngoc Vu">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Getting Started">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Sử liệu Việt Nam",
+    "author": {
+        "@type": "Person",
+        "name": "Dang Ngoc Vu",
+        "image": "//www.gravatar.com/avatar/00e686717f64bc4738a65480b1c56bb7?s=250&d=mm&r=x",
+        "url": "http://admin.sulieuvietnam.info:2368/author/dang/"
+    },
+    "headline": "Chào mừng tới Sử liệu Việt Nam",
+    "url": "http://sulieuvietnam.info/index.html/",
+    "datePublished": "2016-03-23T14:40:54.236Z",
+    "dateModified": "2016-03-23T17:27:10.595Z",
+    "keywords": "Getting Started",
+    "description": "Nhằm mục đích hỗ trợ những người muốn tìm hiểu lịch sử có thể tiếp cận các dữ liệu lịch sử nguyên gốc (raw data) chưa bị bình phẩm, thêm thắt hay làm sai lệch một cách vô tình hay hữu ý, chúng tôi cung cấp một công cụ tra"
+}
+    </script>
+
+    <script type="text/javascript" src="./ghost-url.js"></script><style type="text/css"></style>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "36e2accc12d2"
+});
+</script>
+    <meta name="generator" content="Ghost 0.7">
+    <link rel="alternate" type="application/rss+xml" title="Sử liệu Việt Nam" href="http://admin.sulieuvietnam.info:2368/rss/">
+<style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+<body class="post-template tag-getting-started nav-closed">
+
+
+
+
+
+    <div class="site-wrapper">
+
+        
+
+<main class="content" role="main">
+    <article class="post tag-getting-started">
+
+        <header class="post-header">
+            <h1 class="post-title">Chào mừng tới Sử liệu Việt Nam</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-03-23">23 March 2016</time>  
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Nhằm mục đích hỗ trợ những người muốn tìm hiểu lịch sử có thể tiếp cận các dữ liệu lịch sử nguyên gốc (raw data) chưa bị bình phẩm, thêm thắt hay làm sai lệch một cách vô tình hay hữu ý, chúng tôi cung cấp một công cụ tra cứu thông tin đã được phân loại từ những bộ sử sách như Đại Việt sử ký toàn thư, Đại Việt sử lược ...</p>
+
+<p>Trang web sẽ hoàn toàn miễn phí. Chúng tôi xây dựng trang web vì đam mê cá nhân và không có mục tiêu lợi nhuận. Trang web sẽ không gắn quảng cáo hay các mã độc để kiếm lời từ lượt truy cập của người dùng.</p>
+
+<p>Nội dung thông tin của các sách sử sẽ được phân loại thành thông tin (information) và ý kiến, bình luận (opinion) của người viết. Dữ liệu thông tin luôn luôn đúng, nhưng ý kiến đánh giá của tác giả phụ thuộc vào hệ tư tưởng (Nho giáo, Phật giáo hay trường phái Triết học), việc phân tách thông tin như vậy sẽ giúp người đọc nắm bắt chính xác sự kiện lịch sử đồng thời tự có ý kiến nhận xét mà không bị ảnh hưởng bởi tác giả.</p>
+
+<p>Các sự kiện lịch sử cũng sẽ được liên kết theo dòng thời gian, theo chủ đề hay theo nhân vật lịch sử.</p>
+
+<p>Nếu bạn là 1 coder và muốn nghiên cứu công nghệ HttpCore, Non-blocking IO, MongoDB, High Availability thì dự án này là một cơ hội tốt để bạn bắt đầu. Nếu bạn là một người yêu thích tìm hiểu lịch sử thì hãy tham gia vai trò biên tập viên của dự án, khi bạn phải tự đọc và phân loại thông tin cũng là cách tốt nhất nâng cao tri thức về Lịch sử.</p>
+
+<p>Mọi thông tin đóng góp ý tưởng và cộng tác xin gửi về email <a href="mailto:vudangngoc@gmail.com">vudangngoc@gmail.com</a> hoặc <a href="https://facebook.com/vudangngoc">fb/vudangngoc</a></p>
+        </section>
+
+      
+
+    </article>
+</main>
+
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://admin.sulieuvietnam.info:2368/">Sử liệu Việt Nam</a> © 2016</section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="./jquery-1.12.0.min.js"></script>
+    
+
+    <script type="text/javascript" src="./jquery.fitvids.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+
+
+
+</body></html>

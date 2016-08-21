@@ -1,0 +1,16 @@
+<div>
+<div id="divAuthorList" style="clear: left;"> 
+
+<select id="authorList" onchange="authorController.loadAuthor(this.value)">
+
+</select>
+</div>
+<div> Họ tên <input type="text" id="name"></div>
+<div> Năm sinh <input type="text" id="yob"></div>
+<div> Thông tin <textarea id="description" rows="4" cols="50"> </textarea></div>
+
+<button type="button" onclick='authorController.saveAuthor()'>Save</button>
+<button type="button" onclick='authorController.deleteAuthor()'>Delete</button>
+
+<button type="button" onclick='' id='content_callback' onload="authorController.loadAuthorList('authorList')" style="display: none;">For call OnLoad perpose</button>
+</div>

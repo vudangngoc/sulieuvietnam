@@ -35,7 +35,7 @@ import com.google.gson.Gson;
 
 public class StatisticFileHandle  extends AbstractHandler {
   final static Logger logger = Logger.getLogger(StatisticFileHandle.class);
-  private String homeFolder = "/usr/share/nginx/html/backend";
+  private String homeFolder = "/home/guttso/git/sulieuvietnam/html/backend";
   static {
     logger.setLevel(Level.DEBUG);
   }

@@ -64,6 +64,7 @@ public class BookBackend  extends AbstractHandler {
         if(!"".equals(payload)) {
           Book a = new Book();
           a.setData(new JSONObject(payload));
+          a.setId(a.getId());
           dao.save(a.getId(), a);
           result = "{\"OK\"}";
         }

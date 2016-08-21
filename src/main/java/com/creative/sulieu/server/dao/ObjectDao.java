@@ -15,7 +15,7 @@ public class ObjectDao<T extends Object> {
   protected String domain = "";
   protected Class handleClass = Object.class;
   private RedisHelper rh = new RedisHelper();
-  private FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
+  //private FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
   
   public  void save(String key, T data){
     rh.insertByteArr(getDomain(), key, data.getData().toString().getBytes());

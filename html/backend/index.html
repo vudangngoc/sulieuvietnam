@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="public" >
+
+<script type="text/javascript">
+display=function(text){
+alert(text)
+}
+get=function(url,callback){
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		if(callback != null)
+			callback(xmlhttp.responseText)
+	    }
+	  }
+	xmlhttp.open("GET",url);
+	xmlhttp.send();
+}
+post=function(url,s,callback){
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		if(callback != null)
+			callback(xmlhttp.responseText)
+	    }
+	  }
+	xmlhttp.open("POST",url);
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	xmlhttp.send(s);
+}
+load=function(url){
+	get(url, function(s){
+		var el=document.getElementById("content")
+		el.innerHTML = s
+		document.getElementById("content_callback").onload()
+	})
+}
+</script>
+</head>
+<body>
+<div id="menu" style="height:auto;width:100%;">
+<div style="width:10%;float:left;display: inline;"> <a href="index.html"><h4 style="margin-top:0;">Trang chủ</h4></a></div>
+<div style="width:12%;float:left;display: inline;"> <a onclick='load("./authorDetail.html")'><h4 style="margin-top:0;">Author</h4></a></div>
+<div style="width:12%;float:left;display: inline;"> <a onclick='load("./book.html")'><h4 style="margin-top:0;">Book</h4></a></div>
+<div style="width:15%;float:left;display: inline;"> <a onclick='load("./item.html")'><h4 style="margin-top:0;">Item</h4></a></div>
+</div>
+</br>
+<div id="content" style="height:auto;width:100%;">
+</div>
+
+</br>
+</br>
+</br>
+
+</body>
+<script src="./js/author_controller.js"></script>
+</html>
