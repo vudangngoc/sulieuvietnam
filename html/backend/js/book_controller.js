@@ -42,12 +42,14 @@ var bookController = {
 		if(id === ""){
 			document.getElementById("name").value = "";
 			document.getElementById("year").value = "";
+			document.getElementById("info").value = "";
 		}else
 		get("/book/?action=getBook&bookId=" + id,function(res){
 			var data = JSON.parse(res);
 			document.getElementById("name").value = data.bookName;
 			document.getElementById("year").value = data.releaseYear;
-
+      if(data.info != nil)
+        document.getElementById("info").value = data.info;
 			for(var i = 0; i < data.authorId.length; i++){
 			  document.getElementById(data.authorId[i]).checked = true;
 			}
@@ -58,6 +60,7 @@ var bookController = {
 		data.bookName = document.getElementById("name").value;
 		data.releaseYear = document.getElementById("year").value;
 		data.id = document.getElementById("bookList").value;
+		data.info = document.getElementById("info").value;
 		data.authorId = [];
 					var checkboxs = document.getElementsByName('authorId');
 					for(var i = 0; i < checkboxs.length; i++){
