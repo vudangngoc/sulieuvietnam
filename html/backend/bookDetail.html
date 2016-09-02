@@ -14,22 +14,30 @@
 </select>
 </div>
 </br>
-<div id="divAuthorList" style="float: left;">
+<div>
+<div id="divAuthorList" style="float: left; display: inline;">
 <ul>
 
   </ul>
 </div>
-
-<div> Tên sách <input type="text" id="name"></div>
-<div> Năm xuất bản <input type="text" id="year"></div>
-<div> Thông tin <textarea id="info" rows="4" cols="50"> </textarea></div>
+<div style="float: left; display: inline;">
+<div>
+<div style="display: inline; width: 20%; float: left;"><div style="float: right;"> Tên sách </div></div><div style="display: inline; width: 80%;"><input type="text" id="name"></div></div>
+<div><div style="display: inline; width: 20%; float: left;"> Năm xuất bản </div><div style="display: inline; width: 80%;"><input type="text" id="year"></div></div>
+<div>
+<div style="display: inline; width: 20%; float: left;"> 
+  <div style="float: right;">Thông tin</div> 
+</div>
+  <div style="display: inline; width: 80%;"><textarea id="info" rows="10" cols="50"> </textarea></div>
+</div>
 
 <button type="button" onclick='bookController.saveBook()'>Save</button>
 <button type="button" onclick='bookController.deleteBook()'>Delete</button>
 
 <button type="button" onclick='' id='content_callback' onload="bookController.onload()" style="display: none;">For call OnLoad perpose</button>
 </div>
-
+</div>
+</div>
 </form>
 
 
