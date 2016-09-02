@@ -2,7 +2,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Cache-control" content="public" >
-
+<style>
+.container { border:2px solid #ccc; width:300px; height: 100px; overflow-y: scroll; }
+</style>
 <script type="text/javascript">
 display=function(text){
 alert(text)
@@ -63,7 +65,7 @@ load=function(url){
 <div id="menu" style="height:auto;width:100%;">
 <div style="width:10%;float:left;display: inline;"> <a href="index.html"><h4 style="margin-top:0;">Trang chủ</h4></a></div>
 <div style="width:12%;float:left;display: inline;"> <a onclick='load("./authorDetail.html")'><h4 style="margin-top:0;">Author</h4></a></div>
-<div style="width:12%;float:left;display: inline;"> <a onclick='load("./book.html")'><h4 style="margin-top:0;">Book</h4></a></div>
+<div style="width:12%;float:left;display: inline;"> <a onclick='load("./bookDetail.html")'><h4 style="margin-top:0;">Book</h4></a></div>
 <div style="width:15%;float:left;display: inline;"> <a onclick='load("./item.html")'><h4 style="margin-top:0;">Item</h4></a></div>
 </div>
 </br>
@@ -76,4 +78,5 @@ load=function(url){
 
 </body>
 <script src="./js/author_controller.js"></script>
+<script src="./js/book_controller.js"></script>
 </html>

@@ -1,5 +1,9 @@
 package com.creative.sulieu.server.dao;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.json.JSONObject;
 
 public class Book extends Object {
@@ -8,16 +12,18 @@ public class Book extends Object {
   private static String authorId = "authorId";
   private static String bookName = "bookName";
   private static String releaseYear = "releaseYear";
-  @Override
-  public void setId(String id){
-    getData().put(ID, id);
-    this.id = id;
-  }
-  public String getAuthorId() {
-    return getData().getString(id);
+
+  public List<String> getAuthorIds() {
+    List<String> list = new LinkedList<String>();
+    Iterator<java.lang.Object> i = getData().getJSONArray(authorId).iterator();
+    while(i.hasNext())
+      list.add(i.next().toString());
+    return list;
   }
   public void setAuthorId(String Id) {
-    getData().put(authorId, Id);
+    if(!getData().has(authorId))
+      getData().put(authorId, new LinkedList<>());
+    getData().getJSONArray(authorId).put(Id);
   }
   public String getName() {
     return getData().getString(bookName);
@@ -32,12 +38,7 @@ public class Book extends Object {
     getData().put(releaseYear, year);
   }
 
-  public String getId() {
-    if(getData().has(ID)) 
-      return getData().getString(ID);
-    else
-      return id;
-  }
+
   public Book(String id) {
     super(id);
   }

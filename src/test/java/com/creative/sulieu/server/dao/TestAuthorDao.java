@@ -70,6 +70,7 @@ public class TestAuthorDao extends BaseTest{
   public void testGetAll() throws Exception{
     //Given
     AuthorDao dao = new AuthorDao();
+    dao.deleteAll();
     Author data = new Author();
     dao.setDomain("TestAuthorDao");
     String comment = "dfgfgfgfg";

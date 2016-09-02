@@ -14,7 +14,7 @@ public class Author extends Object {
   private String name = "";
   private int yob = 0;
   private String comment = "";
-  public static String ID = "id";
+  
   public static String NAME = "name";
   public static String YOB = "yob";
   public static String COMMENT = "comment";

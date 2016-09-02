@@ -105,7 +105,7 @@ public class BookBackend  extends AbstractHandler {
     }
     ArrayList<Book> result = new ArrayList<>();
     for(Book book : books) {
-      if(string.equals(book.getAuthorId()))
+      if(book.getAuthorIds().contains(string))
         result.add(book);
     }
     return gson.toJson(result);

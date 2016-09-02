@@ -1,0 +1,35 @@
+<style type="text/css">
+    ul { height: 100%; overflow: auto; width: 200px; border: 1px solid #000; }
+   ul { list-style-type: none; margin: 0; padding: 0; overflow-x: hidden; }
+   li { margin: 0; padding: 0; }
+   label { display: block; color: WindowText; background-color: Window; margin: 0; padding: 0; width: 100%; }
+   label:hover { background-color: Highlight; color: HighlightText; }
+  </style>
+<form name="bookDetail">
+<div style="height: 200px;">
+<div id="divBookList" style="clear: left;"> 
+
+<select id="bookList" onchange="bookController.loadBook(this.value)">
+
+</select>
+</div>
+</br>
+<div id="divAuthorList" style="float: left;">
+<ul>
+
+  </ul>
+</div>
+
+<div> Tên sách <input type="text" id="name"></div>
+<div> Năm xuất bản <input type="text" id="year"></div>
+<div> Thông tin <textarea id="description" rows="4" cols="50"> </textarea></div>
+
+<button type="button" onclick='bookController.saveBook()'>Save</button>
+<button type="button" onclick='bookController.deleteBook()'>Delete</button>
+
+<button type="button" onclick='' id='content_callback' onload="bookController.onload()" style="display: none;">For call OnLoad perpose</button>
+</div>
+
+</form>
+
+

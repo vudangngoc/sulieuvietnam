@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.json.JSONObject;
 
 public abstract class Object {
+  public static String ID = "id";
   public Object() {
     this(UUID.randomUUID().toString().replace("-", "")+ UUID.randomUUID().toString().replace("-", ""));
   }
@@ -12,12 +13,20 @@ public abstract class Object {
     data = getDefault();
     setId(id);
   }
-  protected void setId(String id) {
+  public void setId(String id) {
     if(data != null) data.put("id", id);
+    this.id = id;
   }
   protected String id;
   protected JSONObject data;
-
+  public String getId() {
+    String result = "";
+    result = getData().getString(ID);
+    if(!"".equals(result))
+      return getData().getString(ID);
+    else
+      return this.id;
+  }
   public JSONObject getData() {
     return data;
   }

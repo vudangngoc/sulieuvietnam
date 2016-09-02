@@ -59,6 +59,13 @@ public class ObjectDao<T extends Object> {
       result.add(get(id));
     return result;
   }
+  
+  public boolean deleteAll(){
+    Set<String> ids = getAllKeys();
+    for(String id : ids)
+      delete(id);
+    return true;
+  }
   @SuppressWarnings("unchecked")
   public T createObject(Class<T> v) throws Exception{
     Constructor[] constructors = v.getConstructors();
