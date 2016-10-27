@@ -54,7 +54,7 @@ public class TagBackend extends AbstractHandler{
           JSONObject data1 = new JSONObject(payload);
           Tag tag = new Tag();
           tag.setData(data1);
-          dao.save(tag);
+          dao.save(tag,"");
           result = gson.toJson("OK");
         }
         break;
@@ -77,9 +77,19 @@ public class TagBackend extends AbstractHandler{
           result = getTagItems(queryParas.get(NameDefine.TAG_ID).get(0));
         }
         break;
+      case "addItem":
+        if(queryParas.containsKey(NameDefine.TAG_ID)) {
+          result = addItem(queryParas.get(NameDefine.TAG_ID).get(0),queryParas.get(NameDefine.ITEM_ID).get(0));
+        }
+        break;
       }
     }
     this.submitJsonResult(result, arg1);
+  }
+
+  private String addItem(String tagId, String itemId) {
+    dao.addItem(tagId,itemId);
+    return "OK";
   }
 
   private String getTagItems(String string) {

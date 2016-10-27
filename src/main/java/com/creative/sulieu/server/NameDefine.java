@@ -5,4 +5,5 @@ public class NameDefine {
   public static final String ACTION = "action";
   public static final String BOOK_ID = "bookId";
   public static final String TAG_ID = "tagId";
+  public static final Object ITEM_ID = "itemId";
 }

@@ -4,7 +4,12 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import org.apache.log4j.Logger;
@@ -21,29 +26,22 @@ public class InformationItem extends Object{
     super();
   }
   public String getInfo() {
-    return getData().getString(INFO);
+    if("".equals(this.info))
+      this.info = getData().getString(INFO);
+    return this.info;
   }
   public void setInfo(String info) {
     getData().put(INFO, info);
+    this.info = info;
   }
-  public String getOppinion() {
-    return getData().getString(OPPINION);
+
+  public String getLunarDate() {
+    return getData().getString(LUNAR_DATE);
   }
-  public void setOppinion(String oppinion) {
-    getData().put(OPPINION, oppinion);
+  public void setLunarDate(String lunarYear) {
+    getData().put(LUNAR_DATE, lunarYear);
   }
-  public String getLunarYear() {
-    return getData().getString(LUNAR_YEAR);
-  }
-  public void setLunarYear(String lunarYear) {
-    getData().put(LUNAR_YEAR, lunarYear);
-  }
-  public String getLunarMonth() {
-    return getData().getString(LUNAR_MONTH);
-  }
-  public void setLunarMonth(String lunarMonth) {
-    getData().put(LUNAR_MONTH, lunarMonth);
-  }
+
   public Date getDate() {
     Date result = new Date();
     try {
@@ -57,33 +55,79 @@ public class InformationItem extends Object{
     
     getData().put(DATE, df.format(date));
   }
-  public String[] getTags() {
-    return getData().getJSONArray(TAGS).join("|").split("|");
+  public Set<String> getTags() {
+    if(this.tags.isEmpty())
+      this.tags.addAll(Arrays.asList(getData().getJSONArray(TAGS).join("|").split("|")));
+    return  this.tags;
   }
-  public void setTags(String[] tags) {
+  
+  public String getTitle(){
+    if(this.title == null || title.equals(""))
+      return getData().getString(TITLE);
+    else
+      return title;
+  }
+  
+  public void setTitle(String title){
+    this.title = title;
+    getData().put(TITLE, title);
+  }
+
+  private String id;
+  private String info = "";
+  private String opinion = "";
+  private String lunarDate = "";
+  private String bookId = "";
+  private String authorId = "";
+  private String title = "";
+  private Date date;
+  private Set<String> tags = new HashSet<String>();
+  
+  
+  public String getOpinion() {
+    if("".equals(opinion) || opinion == null)
+      this.opinion = getData().getString(OPPINION);
+    return opinion;
+  }
+  public void setOpinion(String opinion) {
+    this.opinion = opinion;
+    getData().put(OPPINION,opinion);
+  }
+  public String getBookId() {
+    if("".equals(bookId) || bookId == null)
+      this.bookId = getData().getString(BOOK_ID);
+    return bookId;
+  }
+  public void setBookId(String bookId) {
+    this.bookId = bookId;
+    getData().put(BOOK_ID,bookId);
+  }
+  public String getAuthorId() {
+    if("".equals(authorId) || authorId == null)
+      this.authorId = getData().getString(AUTHOR_ID);
+    return authorId;
+  }
+  public void setAuthorId(String authorId) {
+    this.authorId = authorId;
+    getData().put(AUTHOR_ID,authorId);
+  }
+  public void setTags(Set<String> tags) {
+    this.tags = tags;
     getData().put(TAGS, tags);
   }
-  public String getId() {
-    if(getData().has(ID)) return getData().getString(ID);
-    return id;
-  }
-  private String id;
-  private String info;
-  private String oppinion;
-  private String lunarYear;
-  private String lunarMonth;
-  private Date date;
-  private Tag[] tags;
+
   public static String ID = "id";
   public static String INFO = "info";
   public static String OPPINION = "oppinion";
-  public static String LUNAR_YEAR = "lunarYear";
-  public static String LUNAR_MONTH = "lunarMonth";
+  public static String LUNAR_DATE = "lunarDate";
+  public static String AUTHOR_ID = "author_id";
+  public static String BOOK_ID = "book_id";
   public static String DATE = "date";
   public static String TAGS = "tags";
-
+  public static String TITLE = "title";
   @Override
   public boolean valid(JSONObject object) {
-    return object.has(DATE)&&object.has(ID)&&object.has(INFO)&&object.has(LUNAR_MONTH)&&object.has(LUNAR_YEAR)&&object.has(OPPINION)&&object.has(TAGS);
+    return object.has(ID)&&object.has(INFO);
   }
+
 }

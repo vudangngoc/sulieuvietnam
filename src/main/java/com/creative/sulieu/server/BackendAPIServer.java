@@ -39,6 +39,7 @@ import org.apache.log4j.Logger;
 import com.creative.sulieu.server.api.AuthorAPI;
 import com.creative.sulieu.server.backendapi.AuthorBackend;
 import com.creative.sulieu.server.backendapi.BookBackend;
+import com.creative.sulieu.server.backendapi.InfomationBackend;
 import com.creative.sulieu.server.backendapi.StatisticFileHandle;
 
 public class BackendAPIServer {
@@ -63,6 +64,7 @@ public class BackendAPIServer {
         .setExceptionLogger(ExceptionLogger.STD_ERR)
         .registerHandler("/author/*", AuthorBackend.getObject())
         .registerHandler("/book/*", BookBackend.getObject())
+        .registerHandler("/infomation/*", InfomationBackend.getObject())
         .registerHandler("*html", StatisticFileHandle.getObject())
         .registerHandler("*js", StatisticFileHandle.getObject())
         .registerHandler("*css", StatisticFileHandle.getObject())
@@ -75,7 +77,7 @@ public class BackendAPIServer {
       @Override
       public void run() {
         logger.info("Stoping server");
-        server.shutdown(5, TimeUnit.SECONDS);
+        server.shutdown(1, TimeUnit.SECONDS);
       }
     });
 

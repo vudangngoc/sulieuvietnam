@@ -2,6 +2,7 @@ package com.creative.sulieu.server.backendapi;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +25,7 @@ import org.json.JSONObject;
 
 import com.creative.sulieu.server.AbstractHandler;
 import com.creative.sulieu.server.NameDefine;
+import com.creative.sulieu.server.dao.Author;
 import com.creative.sulieu.server.dao.Book;
 import com.creative.sulieu.server.dao.BookDao;
 import com.fasterxml.jackson.core.sym.Name;
@@ -92,6 +94,11 @@ public class BookBackend  extends AbstractHandler {
           result = getBookByAuthor(queryParas.get(NameDefine.AUTHOR_ID).get(0));
         }
         break;
+      case "getAuthorsByBook":
+        if(queryParas.containsKey(NameDefine.BOOK_ID)) {
+          result = getAuthorsByBook(queryParas.get(NameDefine.BOOK_ID).get(0));
+        }
+        break;
       }
     }
     this.submitJsonResult(result, arg1);
@@ -146,5 +153,19 @@ public class BookBackend  extends AbstractHandler {
     }
     return result;
   }
-
+  public String getAuthorsByBook(String bookId){
+    try {
+      List<String> authorIds = dao.get(bookId).getAuthorIds();
+      JSONObject result = new JSONObject();
+      for(String id : authorIds){
+        Author a = new Author();
+        a.setData(new JSONObject(AuthorBackend.getObject().getAuthor(id)));
+        result.put(id, a.getName());
+      }
+      return result.toString();
+    } catch (Exception e) {
+      logger.debug(e);
+    }
+    return "";
+  }
 }

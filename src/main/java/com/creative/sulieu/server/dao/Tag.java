@@ -1,14 +1,16 @@
 package com.creative.sulieu.server.dao;
 
+import java.util.Set;
+
 import org.json.JSONObject;
 
 public class Tag extends Object{
   private String name = "";
-  private String[] relativeItems;
-  public String[] getRelativeItems() {
+  private Set<String> relativeItems;
+  public Set<String> getRelativeItems() {
     return relativeItems;
   }
-  public void setRelativeItems(String[] relativeItems) {
+  public void setRelativeItems(Set<String> relativeItems) {
     this.relativeItems = relativeItems;
   }
   public String getName() {

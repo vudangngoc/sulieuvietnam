@@ -31,9 +31,13 @@ public abstract class Object {
     return data;
   }
 
-  public void setData(JSONObject data) {
-    if(this.valid(data))
+  public boolean setData(JSONObject data) {
+    if(this.valid(data)){
       this.data = data;
+      return true;
+    }else{
+      return false;
+    }
   }
   protected JSONObject getDefault() {
     JSONObject result = new JSONObject();

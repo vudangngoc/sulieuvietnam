@@ -2,20 +2,35 @@
 
 <div id="divBookList" style="display: inline;"> 
 
-<select id="bookList" onchange="bookController.loadBook(this.value)">
+<select id="bookList" onchange="itemController.loadAuthor(this.value)">
 
 </select>
 </div>
+<div style="display: inline;"><button type="button" onclick='itemController.saveItem()'>Save</button> </div>
 
-<div style="display: inline;"><button type="button" onclick='itemController.saveBook()'>Save</button> </div>
+<div style="display: inline;"><button type="button" onclick='itemController.deleteItem()'>Delete</button></div>
 
-<div style="display: inline;"><button type="button" onclick='itemController.deleteBook()'>Delete</button></div>
+
 </div>
+<div id="divAuthorList" style="display: inline;"> 
 
+<select id="authorList" onchange="bookController.loadBook(this.value)">
 
-<div><div style="display: inline; width: 30%; float: left;"> Thời điểm </div><div style="display: inline; width: 70%;"><input type="text" id="year"></div></div>
+</select>
+</div>
+<div id="divItemList" style="display: inline;"> 
+
+<select id="itemList" onchange="bookController.loadBook(this.value)">
+
+</select>
+</div>
+<div><div style="display: inline; width: 30%; float: left;"> Tiêu đề </div><div style="display: inline; width: 70%;"><input type="text" id="title"></div></div>
+<div><div style="display: inline; width: 30%; float: left;"> Năm âm lịch </div><div style="display: inline; width: 70%;"><input type="text" id="lunarDate"></div></div>
+<div><div style="display: inline; width: 30%; float: left;"> Thời điểm </div><div style="display: inline; width: 70%;"><input type="datetime-local" id="time"></div></div>
 <div><div style="display: inline; width: 30%; float: left;"> Nội dung sự kiện </div><div style="display: inline; width: 70%;"><textarea id="info" rows="10" cols="50"> </textarea></div></div>
+<div><div style="display: inline; width: 30%; float: left;"> Ý kiến đánh giá của tác giả </div><div style="display: inline; width: 70%;"><textarea id="opinion" rows="10" cols="50"> </textarea></div></div>
 <div><div style="display: inline; width: 30%; float: left;"> Các nhãn </div><div style="display: inline; width: 70%;"><textarea id="tags" rows="4" cols="50"> </textarea></div></div>
+
 <div id="comments"> </div>
 
 

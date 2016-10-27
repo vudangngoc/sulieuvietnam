@@ -25,11 +25,10 @@ public class ObjectDao<T extends Object> {
     byte[] result = rh.getByteArr(getDomain(), key);
     if(result != null) {
       T o = createObject(getHandleClass());
-      o.setData(new JSONObject(new String(result)));
-      return o;
+      if(o.setData(new JSONObject(new String(result))))
+        return o;
     }
-    else
-      return null;
+    return null;
   }
   protected Class<T> getHandleClass() {
     return handleClass;

@@ -74,6 +74,7 @@ var bookController = {
 	},
 	deleteBook : function(){
 		var id = document.getElementById("bookList").value;
+		if(id === "") return;
 		get("/book/?action=deleteBook&bookId=" + id,function(res){alert(res);});
 	},
 	loopForm: function(form) {

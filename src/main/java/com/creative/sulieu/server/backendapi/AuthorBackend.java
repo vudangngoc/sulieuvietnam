@@ -100,7 +100,7 @@ public class AuthorBackend  extends AbstractHandler {
     String result = "{}";
 
     try {
-      Author author = dao.get(queryParas.get(NameDefine.AUTHOR_ID).get(0));
+      Author author = dao.get(id);
       result = author.toString();
     } catch (Exception e) {
       logger.debug(e);
