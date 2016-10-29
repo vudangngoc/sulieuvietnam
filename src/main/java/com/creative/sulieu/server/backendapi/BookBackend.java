@@ -124,7 +124,7 @@ public class BookBackend  extends AbstractHandler {
       for(String id : books) {
         Book temp;
         temp = dao.get(id);
-        data.put(temp.getId(),temp.getName());
+        data.put(temp.getId(),temp.getName() + " - " + temp.getPublisher() + " - " + temp.getPublisherYear());
       }
       return data.toString();
     } catch (Exception e) {

@@ -30,6 +30,13 @@ public abstract class Object {
   public JSONObject getData() {
     return data;
   }
+  
+  public String getProperty(String propertyName){
+    if(data.has(propertyName))
+      return data.getString(propertyName);
+    else
+      return "";
+  }
 
   public boolean setData(JSONObject data) {
     if(this.valid(data)){

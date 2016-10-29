@@ -43,11 +43,17 @@ var bookController = {
 			document.getElementById("name").value = "";
 			document.getElementById("year").value = "";
 			document.getElementById("info").value = "";
+			document.getElementById("publishYear").value = "";
+		  document.getElementById("publisher").value = "";
+		  document.getElementById("translator").value = "";
 		}else
 		get("/book/?action=getBook&bookId=" + id,function(res){
 			var data = JSON.parse(res);
 			document.getElementById("name").value = data.bookName;
-			document.getElementById("year").value = data.releaseYear;
+			document.getElementById("releaseYear").value = data.releaseYear;
+			document.getElementById("publishYear").value = data.publishYear;
+		  document.getElementById("publisher").value = data.publisher;
+		  document.getElementById("translator").value = data.translator;
       if(data.info != null)
         document.getElementById("info").value = data.info;
 			for(var i = 0; i < data.authorId.length; i++){
@@ -56,11 +62,18 @@ var bookController = {
 		});
 	},
 	saveBook : function(){
+	  if(!bookController.validate()){
+	    alert('invalid data!');
+	    return;
+	  }
 		var data = {};
 		data.bookName = document.getElementById("name").value;
-		data.releaseYear = document.getElementById("year").value;
+		data.releaseYear = document.getElementById("releaseYear").value;
 		data.id = document.getElementById("bookList").value;
 		data.info = document.getElementById("info").value;
+		data.publishYear = document.getElementById("publishYear").value;
+		data.publisher = document.getElementById("publisher").value;
+		data.translator = document.getElementById("translator").value;
 		data.authorId = [];
 					var checkboxs = document.getElementsByName('authorId');
 					for(var i = 0; i < checkboxs.length; i++){
@@ -92,5 +105,10 @@ var bookController = {
             }
         }
     }
-}
+},
+	validate : function(){
+	  if(!Utils.isNumeric(document.getElementById("publishYear").value)) return false;
+	  if(!Utils.isNumeric(document.getElementById("releaseYear").value)) return false;
+	  return true;
+	}
 };

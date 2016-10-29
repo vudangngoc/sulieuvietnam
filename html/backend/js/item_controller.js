@@ -44,8 +44,14 @@ var itemController = {
 	  	document.getElementById("title").value = "";
 	    document.getElementById("time").value = "";
 	    document.getElementById("info").value = "";
+	    document.getElementById("opinion").value = "";
+	    document.getElementById("part").value = "";
+	    document.getElementById("volume").value = "";
+	    document.getElementById("chapter").value = "";
+	    document.getElementById("page").value = "";
+	    document.getElementById("line").value = "";
 	    document.getElementById("lunarDate").value = "";
-	    document.getElementById("tags").value = "";lunarDate
+	    document.getElementById("tags").value = "";
 	    return;
 	  }
 	  get("/infomation/?action=getInfo&id=" + infoId,function(res){
@@ -55,6 +61,11 @@ var itemController = {
 	    document.getElementById("time").value = data.date;
 	    document.getElementById("opinion").value = data.oppinion;
 	    document.getElementById("info").value = data.info;
+	    document.getElementById("part").value = data.part;
+	    document.getElementById("volume").value = data.volume;
+	    document.getElementById("chapter").value = data.chapter;
+	    document.getElementById("page").value = data.page;
+	    document.getElementById("line").value = data.line;
 	    document.getElementById("lunarDate").value = data.lunarDate;
 	    document.getElementById("tags").value = data.tags;
 	  });
@@ -95,22 +106,24 @@ var itemController = {
 		});
 	},
 	saveItem : function (){
-	  if(!document.getElementById("time").validity.valid){
-	    alert("Incorrect date input");
+	  if(!itemController.validate()){
+	    alert("Incorrect data input");
 	    return;
 	  }
 	  var data = {};
 	  data.id = document.getElementById("itemList").value;
 	  data.book_id = document.getElementById("bookList").value;
-	  if(data.book_id === ""){
-	    alert("Incorrect book input");
-	    return;
-	  }
+
 	  data.author_id = document.getElementById("authorList").value;
 	  data.title = document.getElementById("title").value;
 	  data.date = document.getElementById("time").value;
 	  data.oppinion = document.getElementById("opinion").value;
 	  data.info = document.getElementById("info").value;
+	  data.part = document.getElementById("part").value;
+	  data.volume = document.getElementById("volume").value;
+	  data.chapter = document.getElementById("chapter").value;
+	  data.page = document.getElementById("page").value;
+	  data.line = document.getElementById("line").value;
 	  data.lunarDate = document.getElementById("lunarDate").value;
 	  data.tags = document.getElementById("tags").value.split(',');
 	  post("/infomation/?action=saveInfo",JSON.stringify(data),function(res){
@@ -121,5 +134,12 @@ var itemController = {
 		var id = document.getElementById("itemList").value;
 		if(id === "") return;
 		get("/infomation/?action=deleteInfo&id=" + id,function(res){alert(res);});
+	},
+	validate : function(){
+	  if(document.getElementById("bookList").value === "") return false;
+	  if(!document.getElementById("time").validity.valid) return false;
+	  if(!Utils.isNumeric(document.getElementById("page").value)) return false;
+	  if(!Utils.isNumeric(document.getElementById("line").value)) return false;
+	  return true;
 	}
 }

@@ -80,6 +80,61 @@ public class InformationItem extends Object{
   private String bookId = "";
   private String authorId = "";
   private String title = "";
+  private String part = "";
+  private String volume = "";
+  private String chapter = "";
+  private String page = "";
+  private String line = "";
+  public String getPart() {
+    if(!part.equals(""))
+      return part;
+    else
+      return getProperty(PART);
+  }
+  public void setPart(String part) {
+    this.part = part;
+    getData().put(PART, part);
+  }
+  public String getVolume() {
+    if(!volume.equals(""))
+    return volume;
+    else 
+      return getProperty(VOLUME);
+  }
+  public void setVolume(String volume) {
+    this.volume = volume;
+    getData().put(VOLUME, volume);
+  }
+  public String getPage() {
+    if(!page.equals(""))
+    return page;
+    else
+      return getProperty(PAGE);
+  }
+  public void setPage(String page) {
+    this.page = page;
+    getData().put(PAGE, page);
+  }
+  public String getLine() {
+    if(!line.equals(""))
+    return line;
+    else
+      return getProperty(LINE);
+  }
+  public void setLine(String line) {
+    this.line = line;
+    getData().put(LINE, line);
+  }
+  public String getChapter() {
+    if(!chapter.equals(""))
+    return chapter;
+    else
+      return getProperty(CHAPTER);
+  }
+  public void setChapter(String chapter) {
+    this.chapter = chapter;
+    getData().put(CHAPTER, chapter);
+  }
   private Date date;
   private Set<String> tags = new HashSet<String>();
   
@@ -125,6 +180,11 @@ public class InformationItem extends Object{
   public static String DATE = "date";
   public static String TAGS = "tags";
   public static String TITLE = "title";
+  public static String PART = "part";
+  public static String VOLUME = "volume";
+  public static String CHAPTER = "chapter";
+  public static String PAGE = "page";
+  public static String LINE = "line";
   @Override
   public boolean valid(JSONObject object) {
     return object.has(ID)&&object.has(INFO);

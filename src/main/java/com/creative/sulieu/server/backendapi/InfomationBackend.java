@@ -109,9 +109,19 @@ public class InfomationBackend  extends AbstractHandler {
     try {
       JSONObject result = new JSONObject();
       List<InformationItem> list = dao.getAll();
+      StringBuilder description = new StringBuilder();
       for(InformationItem item : list){
-        if(item.getBookId().equals(bookId))
-          result.put(item.getId(), item.getTitle());
+        if(item.getBookId().equals(bookId)){
+           description.setLength(0);
+           description.trimToSize();
+             description.append(item.getPart()).append(" - ")
+                        .append(item.getVolume()).append(" - ")
+                        .append(item.getChapter()).append(" - ")
+                        .append(item.getPage()).append(" - ")
+                        .append(item.getLine()).append(" - ")
+                        .append(item.getTitle());
+          result.put(item.getId(), description.toString());
+        }
       }
       return result.toString();
     } catch (Exception e) {
