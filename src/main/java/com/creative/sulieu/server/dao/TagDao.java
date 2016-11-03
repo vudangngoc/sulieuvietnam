@@ -84,4 +84,12 @@ public class TagDao {
     redisServer.close();
     
   }
+  public void remove(String tagId, String itemId) {
+    Jedis redisServer = rh.getRedisServer();
+    if(!redisServer.sismember(domain, tagId))
+      return;
+    redisServer.srem(tagId, itemId);
+    redisServer.close();
+    
+  }
 }

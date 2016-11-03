@@ -71,6 +71,14 @@ public class InfomationBackend  extends AbstractHandler {
         break;
         case "deleteInfo":{
           for(String infoId : queryParas.get(InformationItem.ID)) {
+            try {
+              InformationItem temp = dao.get(infoId);
+              for(String tag : temp.getTags())
+                TagDao.getObject().remove(tag, infoId);
+            } catch (Exception e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+            }
             dao.delete(infoId);
           }
           result = "{\"OK\"}";

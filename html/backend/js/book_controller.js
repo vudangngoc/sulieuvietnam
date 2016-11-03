@@ -41,7 +41,7 @@ var bookController = {
 			}
 		if(id === ""){
 			document.getElementById("name").value = "";
-			document.getElementById("year").value = "";
+			document.getElementById("releaseYear").value = "";
 			document.getElementById("info").value = "";
 			document.getElementById("publishYear").value = "";
 		  document.getElementById("publisher").value = "";
